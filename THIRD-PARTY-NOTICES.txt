@@ -20,7 +20,7 @@ the MIT License with additional naming restrictions:
 - Hexa.NET.Math (2.0.6)
 - Hexa.NET.OpenGL.Core (1.1.0)
 - Hexa.NET.OpenGL4 (1.1.0)
-- Hexa.NET.Utilities (2.2.2)
+- Hexa.NET.Utilities (2.2.3)
 - HexaGen.Runtime (1.1.21)
 
 Copyright (c) 2024 Juna Meinhold
