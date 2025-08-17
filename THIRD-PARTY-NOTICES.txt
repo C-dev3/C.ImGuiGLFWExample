@@ -9,7 +9,7 @@ The following components are developed by Juna Meinhold and licensed under
 the MIT License with additional naming restrictions:
 
 - Hexa.NET.GLFW (1.0.4)
-- Hexa.NET.ImGui (2.2.8.4)
+- Hexa.NET.ImGui (2.2.8.5)
 - Hexa.NET.ImGui.Backends (1.0.17.4)
 - Hexa.NET.ImGui.Backends.GLFW (1.0.17.4)
 - Hexa.NET.ImGui.Widgets (1.2.14)
