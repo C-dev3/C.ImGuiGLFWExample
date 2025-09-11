@@ -18,7 +18,6 @@ internal class DemoWindow : Window
     private readonly HierarchyViewer hierarchyViewer = new(true);
     private readonly List<string> sampleList = [];
     private readonly DragDropList<string> list = new(multiSelectEnabled: true);
-    private WebView view = null!;
 
     public DemoWindow(string name) : base(name)
     {
@@ -31,10 +30,6 @@ internal class DemoWindow : Window
 
     public override void OnLoad()
     {
-        view = new("https://google.com")
-        {
-            AutoResizeToContentRegion = true
-        };
     }
 
     public override void PreDraw()
@@ -53,8 +48,7 @@ internal class DemoWindow : Window
             CTabBar.Tab("KnobExample", RenderKnobExample),
             CTabBar.Tab("ModalExample", RenderModalExample),
             CTabBar.Tab("WidgetsExample", RenderWidgetsExample),
-            CTabBar.Tab("PaginatedTable", RenderPaginatedTable),
-            CTabBar.Tab("WebViewExample", RenderWebViewExample));
+            CTabBar.Tab("PaginatedTable", RenderPaginatedTable));
     }
 
     private void RenderPieMenuExample()
@@ -155,16 +149,6 @@ internal class DemoWindow : Window
         ImGuiC.ToggleButton("ToggleButton", ref enabled);
         ImGuiC.ToggleButtonSquare("ToggleButtonSquare", ref enabled);
         ImGuiC.ToggleRadio("ToggleRadio", ref enabled);
-    }
-
-    private void RenderWebViewExample()
-    {
-        if (ImGui.BeginChild("WebChild", ImGui.GetContentRegionAvail() * new Vector2(0.99f, 0.95f)))
-        {
-            view.Draw("WebBrowser", true);
-
-            ImGui.EndChild();
-        }
     }
 
     public override void OnDispose()
