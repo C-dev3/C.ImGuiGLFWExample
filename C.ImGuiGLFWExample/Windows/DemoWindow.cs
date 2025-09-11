@@ -1,5 +1,8 @@
 ﻿using C.ImGuiGLFW.Common;
 using C.ImGuiGLFW.ImGuiMethods;
+using C.ImGuiGLFW.ImGuiMethods.Knob;
+using C.ImGuiGLFW.ImGuiMethods.Tab;
+using C.ImGuiGLFW.ImGuiMethods.Web;
 using Hexa.NET.ImGui;
 using System.Numerics;
 
@@ -8,10 +11,14 @@ namespace C.ImGuiGLFWExample.Windows;
 internal class DemoWindow : Window
 {
     private float progress = 0.5f;
+    private float volume = 1.0f;
+    private float spinValue = 0.0f;
+    private bool enabled = false;
     private readonly Vector2 barSize = new(400, 15);
     private readonly HierarchyViewer hierarchyViewer = new(true);
     private readonly List<string> sampleList = [];
     private readonly DragDropList<string> list = new(multiSelectEnabled: true);
+    private WebView view = null!;
 
     public DemoWindow(string name) : base(name)
     {
@@ -19,6 +26,15 @@ internal class DemoWindow : Window
         hierarchyViewer.AddRootNodes(CreateSampleHierarchy());
         for (int i = 0; i < 1000; i++) { sampleList.Add($"SampleItem {i + 1}"); }
         list.AddItems(sampleList);
+        hierarchyViewer.UseChildWindow = true;
+    }
+
+    public override void OnLoad()
+    {
+        view = new("https://google.com")
+        {
+            AutoResizeToContentRegion = true
+        };
     }
 
     public override void PreDraw()
@@ -30,6 +46,55 @@ internal class DemoWindow : Window
 
     protected override void Draw()
     {
+        RenderPieMenuExample();
+
+        CTabBar.BeginTabBar("TabBarExample", default,
+            CTabBar.Tab("Example", RenderExample),
+            CTabBar.Tab("KnobExample", RenderKnobExample),
+            CTabBar.Tab("ModalExample", RenderModalExample),
+            CTabBar.Tab("WidgetsExample", RenderWidgetsExample),
+            CTabBar.Tab("PaginatedTable", RenderPaginatedTable),
+            CTabBar.Tab("WebViewExample", RenderWebViewExample));
+    }
+
+    private void RenderPieMenuExample()
+    {
+        if (ImGui.IsMouseClicked(ImGuiMouseButton.Right))
+        {
+            ImGui.OpenPopup("PieMenu");
+        }
+
+        if (ImGuiC.BeginPiePopup("PieMenu"))
+        {
+            if (ImGuiC.PieMenuItem("New"))
+            {
+                // Do something
+            }
+
+            if (ImGuiC.BeginPieMenu("Edit", true))
+            {
+                if (ImGuiC.PieMenuItem("Toggle"))
+                {
+                    enabled ^= true;
+                }
+                if (ImGuiC.PieMenuItem("Paste", enabled))
+                {
+                    ModalHelper.ShowModal("Paste", "Paste finished!");
+                }
+                ImGuiC.EndPieMenu();
+            }
+
+            if (ImGuiC.PieMenuItem("Delete"))
+            {
+                // Do something
+            }
+
+            ImGuiC.EndPiePopup();
+        }
+    }
+
+    private void RenderExample()
+    {
         progress = (float)ImGui.GetTime() % 10f / 10f;
         ImGuiC.BufferingBar("Loading##buffer1", progress, barSize);
         ImGuiC.BufferingBarRounded("Loading##buffer2", progress, barSize);
@@ -37,14 +102,69 @@ internal class DemoWindow : Window
         ImGuiC.ProgressBarRounded("Progress##progress2", progress, barSize);
         ImGuiC.LinearProgressBar(progress, barSize);
 
-        ImGuiC.Spinner("Spinner", 60.0f);
+        ImGuiC.Spinner("Spinner", 40.0f);
         ImGui.SameLine();
-        ImGuiC.LoadingCircle(60.0f);
+        ImGuiC.LoadingCircle(40.0f);
         ImGui.SameLine();
-        ImGuiC.CircularProgress(progress, 60.0f);
+        ImGuiC.CircularProgress(progress, 40.0f);
 
         list.Render((item, index) => $"{index}: {item}");
-        hierarchyViewer.Render();
+        hierarchyViewer.Render(ImGuiC.GetContentRegionHeightAvail(0.75f, 0));
+    }
+
+    private void RenderKnobExample()
+    {
+        CKnob.KnobTick("TickKnob", ref volume, 0.0f, 100.0f);
+        ImGui.SameLine();
+        CKnob.KnobDot("DotKnob", ref volume, 0.0f, 100.0f);
+        ImGui.SameLine();
+        CKnob.KnobWiper("WiperKnob", ref volume, 0.0f, 100.0f);
+        ImGui.SameLine();
+        CKnob.KnobWiperOnly("WiperOnlyKnob", ref volume, 0.0f, 100.0f);
+        ImGui.SameLine();
+        CKnob.KnobWiperDot("WiperDotKnob", ref volume, 0.0f, 100.0f);
+        ImGui.SameLine();
+        CKnob.KnobStepped("SteppedKnob", ref volume, 0.0f, 100.0f);
+        ImGui.SameLine();
+        CKnob.KnobSpace("SpaceKnob", ref volume, 0.0f, 100.0f);
+    }
+
+    private void RenderPaginatedTable()
+    {
+        ImGuiC.PaginatedTable("Paginated", sampleList, ["Id", "Name"],
+            (item, index) =>
+            {
+                ImGui.TableNextColumn();
+                ImGui.Text($"{index + 1}");
+                ImGui.TableNextColumn();
+                ImGui.Text(item);
+            });
+    }
+
+    private static void RenderModalExample()
+    {
+        if (ImGui.Button("ShowModal")) ModalHelper.ShowModal("SimpleModal", "Modal Message");
+        if (ImGui.Button("InputModal")) ModalHelper.ShowInputModal("SimpleModal", "Modal Message");
+        if (ImGui.Button("ShowConfirmationModal")) ModalHelper.ShowConfirmation("SimpleModal", "Modal Message");
+        if (ImGui.Button("ShowInputNumberModal")) ModalHelper.ShowInputNumberModal("SimpleModal", "Modal Message");
+    }
+
+    private void RenderWidgetsExample()
+    {
+        ImGuiC.SpinScaler("Scalar", ref spinValue);
+        ImGuiC.ToggleButton("ToggleButton", ref enabled);
+        ImGuiC.ToggleButtonSquare("ToggleButtonSquare", ref enabled);
+        ImGuiC.ToggleRadio("ToggleRadio", ref enabled);
+    }
+
+    private void RenderWebViewExample()
+    {
+        if (ImGui.BeginChild("WebChild", ImGui.GetContentRegionAvail() * new Vector2(0.99f, 0.95f)))
+        {
+            view.Draw("WebBrowser", true);
+
+            ImGui.EndChild();
+        }
     }
 
     public override void OnDispose()
