@@ -12,8 +12,8 @@ the MIT License with additional naming restrictions:
 - Hexa.NET.ImGui (2.2.10-prerelease)
 - Hexa.NET.ImGui.Backends (1.0.19-prerelease)
 - Hexa.NET.ImGui.Backends.GLFW (1.0.19-prerelease)
-- Hexa.NET.ImGui.Widgets (1.2.14)
-- Hexa.NET.ImGui.Widgets.Extras (1.0.6)
+- Hexa.NET.ImGui.Widgets (1.2.15)
+- Hexa.NET.ImGui.Widgets.Extras (1.0.9)
 - Hexa.NET.ImGuizmo (2.2.10-prerelease)
 - Hexa.NET.ImNodes (2.2.10-prerelease)
 - Hexa.NET.ImPlot (2.2.10-prerelease)
@@ -21,7 +21,7 @@ the MIT License with additional naming restrictions:
 - Hexa.NET.Math (2.0.6)
 - Hexa.NET.OpenGL.Core (1.1.0)
 - Hexa.NET.OpenGL4 (1.1.0)
-- Hexa.NET.Utilities (2.2.3)
+- Hexa.NET.Utilities (2.2.5)
 - HexaGen.Runtime (1.1.21)
 
 Copyright (c) 2024 Juna Meinhold
@@ -129,7 +129,7 @@ Apache 2.0 Licensed Components
 The following components are licensed under the Apache License, Version 2.0:
 
 - Serilog (4.3.0)
-- Serilog.Sinks.Console (6.0.0)
+- Serilog.Sinks.Console (6.1.1)
 - Serilog.Sinks.File (7.0.0)
 - MaterialColorUtilities (0.3.0)
 
