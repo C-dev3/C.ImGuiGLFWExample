@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="C.ImGuiGLFW" Version="1.0.0.23-preview" />
+    <PackageReference Include="C.ImGuiGLFW" Version="1.0.0.24-preview" />
   </ItemGroup>
 
   <ItemGroup>

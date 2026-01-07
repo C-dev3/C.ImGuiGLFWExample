@@ -8,7 +8,7 @@ Hexa.NET Components (MIT License with Naming Clause)
 The following components are developed by Juna Meinhold and licensed under 
 the MIT License with additional naming restrictions:
 
-- Hexa.NET.GLFW (1.0.4)
+- Hexa.NET.GLFW (1.0.5)
 - Hexa.NET.ImGui (2.2.10-prerelease)
 - Hexa.NET.ImGui.Backends (1.0.19-prerelease)
 - Hexa.NET.ImGui.Backends.GLFW (1.0.19-prerelease)
@@ -21,7 +21,7 @@ the MIT License with additional naming restrictions:
 - Hexa.NET.Math (2.0.6)
 - Hexa.NET.OpenGL.Core (1.1.0)
 - Hexa.NET.OpenGL4 (1.1.0)
-- Hexa.NET.Utilities (2.2.5)
+- Hexa.NET.Utilities (2.2.8)
 - HexaGen.Runtime (1.1.21)
 
 Copyright (c) 2024 Juna Meinhold
