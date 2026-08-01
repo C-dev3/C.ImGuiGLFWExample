@@ -9,19 +9,19 @@ The following components are developed by Juna Meinhold and licensed under
 the MIT License with additional naming restrictions:
 
 - Hexa.NET.GLFW (1.0.5)
-- Hexa.NET.ImGui (2.2.10-prerelease)
-- Hexa.NET.ImGui.Backends (1.0.19-prerelease)
-- Hexa.NET.ImGui.Backends.GLFW (1.0.19-prerelease)
-- Hexa.NET.ImGui.Widgets (1.2.15)
+- Hexa.NET.ImGui (3.1.0-experimental)
+- Hexa.NET.ImGui.Backends (3.1.0-experimental)
+- Hexa.NET.ImGui.Backends.GLFW (3.1.0-experimental)
+- Hexa.NET.ImGui.Widgets (1.2.18)
 - Hexa.NET.ImGui.Widgets.Extras (1.0.9)
-- Hexa.NET.ImGuizmo (2.2.10-prerelease)
-- Hexa.NET.ImNodes (2.2.10-prerelease)
-- Hexa.NET.ImPlot (2.2.10-prerelease)
-- Hexa.NET.ImPlot3D (2.2.10-prerelease)
+- Hexa.NET.ImGuizmo (3.1.0-experimental)
+- Hexa.NET.ImNodes (3.1.0-experimental)
+- Hexa.NET.ImPlot (3.1.0-experimental)
+- Hexa.NET.ImPlot3D (3.1.0-experimental)
 - Hexa.NET.Math (2.0.6)
 - Hexa.NET.OpenGL.Core (1.1.0)
 - Hexa.NET.OpenGL4 (1.1.0)
-- Hexa.NET.Utilities (2.2.8)
+- Hexa.NET.Utilities (2.2.12)
 - HexaGen.Runtime (1.1.21)
 
 Copyright (c) 2024 Juna Meinhold
@@ -128,7 +128,7 @@ Apache 2.0 Licensed Components
 ================================================================================
 The following components are licensed under the Apache License, Version 2.0:
 
-- Serilog (4.3.0)
+- Serilog (4.4.0)
 - Serilog.Sinks.Console (6.1.1)
 - Serilog.Sinks.File (7.0.0)
 - MaterialColorUtilities (0.3.0)
