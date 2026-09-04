@@ -2,7 +2,6 @@
 using C.ImGuiGLFW.ImGuiMethods;
 using C.ImGuiGLFW.ImGuiMethods.Knob;
 using C.ImGuiGLFW.ImGuiMethods.Tab;
-using C.ImGuiGLFW.ImGuiMethods.Web;
 using Hexa.NET.ImGui;
 using System.Numerics;
 
